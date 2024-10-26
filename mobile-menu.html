@@ -20,15 +20,6 @@
             icon.classList.remove("active");
         }
     });
-
-    //prevent auto scroll
-        jQuery( document ).on( 'elementor/popup/show', () => {
-      jQuery("html,body").addClass("cantScroll");  
-    });      
-    
-    jQuery(document).on( 'elementor/popup/hide', () => {
-      jQuery("html,body").removeClass("cantScroll");
-    });
 });
 </script>
 
@@ -151,11 +142,3 @@
   animation-fill-mode: both !important; 
 }
 </style>
-
-
-//add to main.css
-
-html.cantScroll,
-body.cantScroll{
-  overflow: hidden !important;
-}

@@ -1,0 +1,63 @@
+// Icon snippet
+<div class="custom-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const icon = document.querySelector(".custom-icon");
+
+    icon.addEventListener("click", (event) => {
+        icon.classList.toggle("active");
+        elementorProFrontend.modules.popup.showPopup({ id: 558 }); //Pop up id [elementor-template id="558"]
+        event.stopPropagation(); 
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!icon.contains(event.target)) {
+            icon.classList.remove("active");
+        }
+    });
+});
+
+</script>
+
+//Popup slide in customize for smooter experience
+@keyframes devSlideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInLeft {
+  animation-name: devSlideInLeft !important;
+  animation-duration: 0.1s !important; 
+  animation-timing-function: ease-out !important; 
+  animation-fill-mode: both !important; 
+}
+
+@keyframes devSlideOutLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    visibility: hidden; 
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.slideOutLeft {
+  animation-name: devSlideOutLeft !important; 
+  animation-duration: 0.1s !important; 
+  animation-timing-function: ease-out !important; 
+  animation-fill-mode: both !important; 
+}

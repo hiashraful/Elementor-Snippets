@@ -74,6 +74,35 @@
         transform: rotate(-45deg);
     }
 </style>
+
+//Additionaly remove all the borders and focus backgrounds
+<style>
+    //id can be found in "ul" of the menu created with wordpress
+    #menu-2-b33d714, 
+    #menu-2-b33d714 a {
+        border: none;
+        background-color: transparent;
+        outline: none;
+    }
+    
+    
+    #menu-2-b33d714 a:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    
+    #menu-2-b33d714 li:hover,
+    #menu-2-b33d714 li:active,
+    #menu-2-b33d714 a:hover,
+    #menu-2-b33d714 a:active {
+        background-color: transparent;
+        outline: none;
+    }
+    
+    #menu-2-b33d714 .sub-menu {
+        border: none;
+    }
+</style>
 //Popup slide in customize for smooter experience
 <style>
 @keyframes devSlideInLeft {

@@ -1,0 +1,320 @@
+<section class="container">
+  <div class="slider">
+    <div class="slide slide-1 active">
+      <div class="img-box">
+        <img src="/wp-content/uploads/2025/03/image-1.png" alt="Slide 1" />
+      </div>
+      <div class="content-box">
+        <div class="texts">
+          <p>
+            + 8 years of experience in Visual communication and Branding.
+            His journey has led him to work with international startups.
+          </p>
+          <p>
+            Along the way, he has embarked on creative adventures between
+            Asia and Europe, collaborating on projects for renowned brands
+            such as Marriott Hotel and Huawei Shanghai.
+          </p>
+          <p>
+            Now, Ace is Co-Founder of Cuadro, a company driven by the
+            mission to empower entrepreneurs like you. He believes in the
+            power of strong brands and brings his experience to transform
+            founders’ ideas into successful realities.
+          </p>
+        </div>
+        <div class="author-box">
+          <div class="author-img">
+            <img src="/wp-content/uploads/2025/03/user.png" alt="Author" />    
+          </div>
+          <div class="author-info">
+            <h4>Ace  G. Spagni -  Co-founder </h4>
+            <p>Brand & Creative Strategist</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide slide-2">
+      <div class="img-box">
+        <img src="/uploads/2025/03/img2.png" alt="Slide 2" />
+      </div>
+      <div class="content-box">
+        <div class="texts">
+          <p>
+            + 8 years of experience in Visual communication and Branding.
+            His journey has led him to work with international startups.
+          </p>
+          <p>
+            Along the way, he has embarked on creative adventures between
+            Asia and Europe, collaborating on projects for renowned brands
+            such as Marriott Hotel and Huawei Shanghai.
+          </p>
+          <p>
+            Now, Ace is Co-Founder of Cuadro, a company driven by the
+            mission to empower entrepreneurs like you. He believes in the
+            power of strong brands and brings his experience to transform
+            founders’ ideas into successful realities.
+          </p>
+        </div>
+        <div class="author-box">
+          <div class="author-img">
+            <img src="/wp-content/uploads/2025/03/user.png" alt="Author" />    
+          </div>
+          <div class="author-info">
+            <h4>Ace  G. Spagni -  Co-founder </h4>
+            <p>Brand & Creative Strategist</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-btn">
+      <div class="prev">
+        <span>&#8592;</span>
+      </div>
+      <div class="next">
+        <span>&#8594;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.slide');
+  const next = document.querySelector('.next');
+  const prev = document.querySelector('.prev');
+  let index = 0;
+
+  next.addEventListener('click', function() {
+    changeSlide(1); 
+  });
+
+  prev.addEventListener('click', function() {
+    changeSlide(-1); 
+  });
+
+  function changeSlide(direction) {
+    const currentSlide = document.querySelector('.slide.active');
+    const currentParagraphs = currentSlide.querySelectorAll('.texts p');
+    const currentAuthorBox = currentSlide.querySelector('.author-box');
+
+    currentParagraphs.forEach((p) => {
+      p.style.opacity = 0;
+      p.style.transform = 'translateY(40px)';
+    });
+    currentAuthorBox.style.opacity = 0;
+    currentAuthorBox.style.transform = 'translateY(40px)';
+
+
+    currentSlide.classList.remove('active');
+
+    index += direction;
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+
+    const newSlide = slides[index];
+    newSlide.classList.add('active');
+
+    const paragraphs = newSlide.querySelectorAll('.texts p');
+    const authorBox = newSlide.querySelector('.author-box');
+
+    paragraphs.forEach((p, i) => {
+      setTimeout(() => {
+        p.style.opacity = 1;
+        p.style.transform = 'translateY(0)';
+      }, i * 200); 
+    });
+
+    setTimeout(() => {
+      authorBox.style.opacity = 1;
+      authorBox.style.transform = 'translateY(0)';
+    }, paragraphs.length * 200); 
+  }
+
+
+  const firstSlide = document.querySelector('.slide.active');
+  const firstParagraphs = firstSlide.querySelectorAll('.texts p');
+  const firstAuthorBox = firstSlide.querySelector('.author-box');
+
+  firstParagraphs.forEach((p, i) => {
+    setTimeout(() => {
+      p.style.opacity = 1;
+      p.style.transform = 'translateY(0)';
+    }, i * 200);
+  });
+
+  setTimeout(() => {
+    firstAuthorBox.style.opacity = 1;
+    firstAuthorBox.style.transform = 'translateY(0)';
+  }, firstParagraphs.length * 200);
+});
+</script>
+
+/* testimonial slider*/
+/* Slider Styles */
+.container {
+  width: 100%;
+  max-width: 900px;
+  min-height: 600px;
+  border: 1px solid #000;
+  border-radius: 30px;
+  padding: 40px;
+  margin: 0 auto;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide .img-box {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide .img-box img {
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.slide .content-box {
+  flex: 1;
+  padding: 40px;
+}
+
+.texts p {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.author-box {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.author-img {
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.author-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-info h4 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.author-info p {
+  font-size: 16px;
+  color: #777;
+}
+
+.slide-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 55%;
+  transform: translateX(-50%);
+  display: flex;
+  z-index: 3;
+}
+
+.prev, .next {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 767px) {
+  .container {
+    padding: 20px;
+    min-height: 900px;
+  }
+
+  .slider {
+    flex-direction: column;
+    height: 960px;
+  }
+
+  .slide {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .slide .img-box {
+    flex: none;
+    height: auto; 
+    width: 100%;
+  }
+
+  .slide .content-box {
+    flex: none;
+    padding: 20px;
+  }
+
+  .texts p {
+    font-size: 14px;
+  }
+
+  .author-info h4 {
+    font-size: 14px;
+  }
+
+  .author-info p {
+    font-size: 14px;
+  }
+
+  .slide-btn {
+    bottom: 10px;
+  }
+
+  .prev, .next {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+}

@@ -11,6 +11,7 @@
     }
   }
   
+  /* Main animation*/
   .dev-animate-fade-in-up {
     opacity: 0;
     transform: translateY(20px);
@@ -19,7 +20,8 @@
   .dev-animate-fade-in-up.dev-animate-fade-in-up--active {
     animation: dev-fadeInUp 0.3s ease forwards;
   }
-  
+
+  /* Delays */
   .dev-animate-fade-in-up.dev-delay-1 { animation-delay: 0.2s; }
   .dev-animate-fade-in-up.dev-delay-2 { animation-delay: 0.4s; }
   .dev-animate-fade-in-up.dev-delay-3 { animation-delay: 0.6s; }
@@ -29,17 +31,17 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const elements = document.querySelectorAll('.dev-animate-fade-in-up'); //
+      const elements = document.querySelectorAll('.dev-animate-fade-in-up'); //retreive elements
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {          
-            entry.target.classList.add('dev-animate-fade-in-up--active');
+            entry.target.classList.add('dev-animate-fade-in-up--active'); //add class when intersecting
           } else {          
-            entry.target.classList.remove('dev-animate-fade-in-up--active');
+            entry.target.classList.remove('dev-animate-fade-in-up--active'); //remove class when intersecting
           }
         });
       }, {
-        threshold: 1.0, 
+        threshold: 1.0, //element 100% in viewport
       });
         
       elements.forEach((element) => {
